@@ -1,5 +1,6 @@
 #include "Segment.h"
 #include "mmseg.h"
+#include <vld.h> 
 std::vector<String>MMSeg::segment(const String& s, int depth) {
     std::vector<String> ret;
     auto start = s.begin(), end = s.end();
@@ -52,7 +53,7 @@ int MMSeg::load(const std::string& dict, const std::string& char_freqs) {
 
 std::vector<Chunk>  MMSeg::get_chunks(StringIt _start, StringIt _end, int depth) {
     std::vector<Chunk> ret;
-    std::function<void(StringIt, StringIt, int, std::vector<StringP>)> get_chunks_it = [&](StringIt start, StringIt end, int n, std::vector<StringP> segs) {
+    std::function<void(StringIt, StringIt, int, std::vector<StringItP>)> get_chunks_it = [&](StringIt start, StringIt end, int n, std::vector<StringItP> segs) {
         if (n == 0 || start == end) {
             ret.emplace_back(std::move(segs), char_freqs_);
         } else {
@@ -68,6 +69,6 @@ std::vector<Chunk>  MMSeg::get_chunks(StringIt _start, StringIt _end, int depth)
         }
     };
 
-    get_chunks_it(_start, _end, depth, std::vector<StringP>{});
+    get_chunks_it(_start, _end, depth, std::vector<StringItP>{});
     return ret;
 }

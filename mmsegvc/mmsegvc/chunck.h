@@ -2,14 +2,14 @@
 #define _CHUNCK_H_
 #include "trie.h"
 struct Chunk {
-    std::vector<StringP> words_;
+    std::vector<StringItP> words_;
     size_t length_ = 0;
     float mean_ = 0, var_ = 0, degree_ = 0;
 
-    Chunk(std::vector<StringP> words, const std::unordered_map<Char, int>& chars) : words_(std::move(words)) {
-        length_ = std::accumulate(words_.begin(), words_.end(), size_t(0), [&](size_t n, const StringP& w) { return n + sementlength(w); });
+    Chunk(std::vector<StringItP> words, const std::unordered_map<Char, int>& chars) : words_(std::move(words)) {
+        length_ = std::accumulate(words_.begin(), words_.end(), size_t(0), [&](size_t n, const StringItP& w) { return n + sementlength(w); });
         mean_ = float(length_) / words_.size();
-        var_ = -std::accumulate(words_.begin(), words_.end(), float(0), [&](size_t n, const StringP& w) { return  n + (sementlength(w) - mean_) * (sementlength(w) - mean_); }) / words_.size();
+        var_ = -std::accumulate(words_.begin(), words_.end(), float(0), [&](size_t n, const StringItP& w) { return  n + (sementlength(w) - mean_) * (sementlength(w) - mean_); }) / words_.size();
 
         for (auto& w : words_) {
             if (sementlength(w) != 1) continue;
