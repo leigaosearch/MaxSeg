@@ -1,8 +1,8 @@
 #include "Segment.h"
 #include "mmseg.h"
 #include <vld.h> 
-std::vector<String>MMSeg::segment(const String& s, int depth) {
-    std::vector<String> ret;
+std::vector<ChString>MMSeg::segment(const ChString& s, int depth) {
+    std::vector<ChString> ret;
     auto start = s.begin(), end = s.end();
     while (start != end) {
         auto chunks = get_chunks(start, end, depth);
@@ -13,7 +13,7 @@ std::vector<String>MMSeg::segment(const String& s, int depth) {
         for (auto& c : chunks) std::cout << c.to_string() << std::endl; std::cout << std::endl;
         auto& word = best->words_.front();
         start += sementlength(word);
-        ret.emplace_back(String(word.first, word.second));
+        ret.emplace_back(ChString(word.first, word.second));
     }
 
     return ret;
@@ -26,7 +26,7 @@ int MMSeg::load(const std::string& dict, const std::string& char_freqs) {
         std::string line;
         if (!std::getline(din, line)) break;
         std::u16string word = from_utf8(trim(line));
-        dict_.add(word);
+        dict_.insert(word);
     }
     din.close();
 
@@ -51,14 +51,18 @@ int MMSeg::load(const std::string& dict, const std::string& char_freqs) {
     return 0;
 }
 
-std::vector<Chunk>  MMSeg::get_chunks(StringIt _start, StringIt _end, int depth) {
+std::vector<Chunk>  MMSeg::get_chunks(ChStringIt _start, ChStringIt _end, int depth) {
     std::vector<Chunk> ret;
-    std::function<void(StringIt, StringIt, int, std::vector<StringItP>)> get_chunks_it = [&](StringIt start, StringIt end, int n, std::vector<StringItP> segs) {
+    std::function<void(ChStringIt, ChStringIt, int, std::vector<ChStringItP>)> get_chunks_it = [&](ChStringIt start, ChStringIt end, int n, std::vector<ChStringItP> segs) {
         if (n == 0 || start == end) {
             ret.emplace_back(std::move(segs), char_freqs_);
         } else {
+            //get all the possible 
+            //操作系统will return 操作 操作系统
+
             auto m = dict_.match_all(start, end);
             for (auto& w : m) {
+                //nsegs is the local varialbe branch 得到一个tree形状 直到结尾
                 auto nsegs = segs;
                 auto len = sementlength(w);
                 nsegs.emplace_back(std::move(w));
@@ -69,6 +73,6 @@ std::vector<Chunk>  MMSeg::get_chunks(StringIt _start, StringIt _end, int depth)
         }
     };
 
-    get_chunks_it(_start, _end, depth, std::vector<StringItP>{});
+    get_chunks_it(_start, _end, depth, std::vector<ChStringItP>{});
     return ret;
 }

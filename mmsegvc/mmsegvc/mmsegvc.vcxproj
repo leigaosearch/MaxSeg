@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="hmm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="segment.cpp" />
     <ClCompile Include="trie.cpp" />

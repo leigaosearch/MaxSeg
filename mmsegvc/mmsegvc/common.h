@@ -15,11 +15,11 @@
 #else // gcc has no <codecvt>
 #include "utf8cpp/utf8.h"
 #endif
-using Char = char16_t;
-using String = std::u16string;
-using StringIt = String::const_iterator;
-using StringItP = std::pair < StringIt, StringIt >;
-static size_t sementlength(const StringItP& w) { return std::distance(w.first, w.second); }
+using Chchar = char16_t;
+using ChString = std::u16string;
+using ChStringIt = ChString::const_iterator;
+using ChStringItP = std::pair < ChStringIt, ChStringIt >;
+static size_t sementlength(const ChStringItP& w) { return std::distance(w.first, w.second); }
 #if defined(_LIBCPP_BEGIN_NAMESPACE_STD)
 inline static std::string to_utf8(const std::u16string& in) {
     std::wstring_convert<std::codecvt_utf8<char16_t>, char16_t> cv;

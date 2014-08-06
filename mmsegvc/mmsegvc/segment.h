@@ -10,7 +10,7 @@
 #define _SEGMENT_H_
 #pragma once
 
-#include "trie.h"
+#include "chtrie.h"
 #include "chunck.h"
 
 
@@ -30,13 +30,13 @@ public:
 
 private:
 
-    std::unordered_map<Char, int> char_freqs_;
-    Trie dict_;
+    std::unordered_map<Chchar, int> char_freqs_;
+    ChTrie dict_;
 
-    std::vector<Chunk> get_chunks(StringIt _start, StringIt _end, int depth);
+    std::vector<Chunk> get_chunks(ChStringIt _start, ChStringIt _end, int depth);
 
 public:
-    std::vector<String> segment(const String& s, int depth = 3);
+    std::vector<ChString> segment(const ChString& s, int depth = 3);
     int load(const std::string& dict, const std::string& char_freqs = "");
 };
 
