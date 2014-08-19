@@ -18,13 +18,16 @@
     <ClCompile Include="segment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="trie.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="hmm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chtrie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="naivebayes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +35,13 @@
     <ClInclude Include="segment.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="trie.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="chunck.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="common.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chtrie.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

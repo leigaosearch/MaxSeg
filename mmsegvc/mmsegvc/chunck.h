@@ -1,6 +1,6 @@
 #ifndef _CHUNCK_H_
 #define _CHUNCK_H_
-#include "trie.h"
+#include "chtrie.h"
 struct Chunk {
     std::vector<ChStringItP> words_;
     size_t length_ = 0;

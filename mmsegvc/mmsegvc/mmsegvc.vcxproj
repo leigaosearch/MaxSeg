@@ -13,19 +13,21 @@
   <ItemGroup>
     <ClCompile Include="hmm.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="naivebayes.cpp" />
     <ClCompile Include="segment.cpp" />
-    <ClCompile Include="trie.cpp" />
+    <ClCompile Include="chtrie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chunck.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="segment.h" />
-    <ClInclude Include="trie.h" />
+    <ClInclude Include="chtrie.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{79A1BC9B-3596-4D70-A3C0-54147D75D962}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>mmsegvc</RootNamespace>
+    <ProjectName>nlp</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

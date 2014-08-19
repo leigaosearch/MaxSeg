@@ -2,9 +2,6 @@
 
 void ChTrie::insert(const ChString& word) {
 
-
-
-
     Node *current = &root_;
     for (auto ch : word) {
         auto it = current->trans_.find(ch);
